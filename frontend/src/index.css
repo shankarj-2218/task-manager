@@ -1,0 +1,16 @@
+.container {
+  width: 400px;
+  margin: 40px auto;
+  text-align: center;
+}
+input, select, button {
+  display: block;
+  width: 100%;
+  margin: 8px 0;
+  padding: 8px;
+}
+.task {
+  border: 1px solid #ddd;
+  margin: 10px 0;
+  padding: 8px;
+}

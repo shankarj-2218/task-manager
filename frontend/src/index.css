@@ -268,3 +268,43 @@ body {
 .auth-container a:hover {
   text-decoration: underline;
 }
+
+
+.no-tasks-card {
+  text-align: center;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 30px;
+  margin-top: 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+.no-tasks-card h3 {
+  color: #16a34a;
+  font-weight: 600;
+}
+.no-tasks-card p {
+  color: #6b7280;
+}
+
+.no-tasks-card {
+  text-align: center;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 30px;
+  margin-top: 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.no-tasks-card h3 {
+  font-size: 18px;
+  color: #16a34a;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.no-tasks-card p {
+  font-size: 14px;
+  color: #6b7280;
+}

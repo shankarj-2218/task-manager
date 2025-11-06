@@ -21,7 +21,7 @@ const Dashboard = () => {
             params.append("search", filters.search);
         }
         const res = await API.get(`/tasks?${params.toString()}`);
-        setTasks(res.data);
+        setTasks(res.data.tasks || res.data);
       } catch (err) {
         console.error("Error fetching tasks:", err);
       } finally {
@@ -34,7 +34,7 @@ const Dashboard = () => {
   // Load all tasks only once at start
   useEffect(() => {
     fetchTasks(false);
-  }, [fetchTasks]); // 👈 only runs on mount
+  }, []); // 👈 only runs on mount
 
   const addTask = async (task) => {
     try {
@@ -87,7 +87,11 @@ const Dashboard = () => {
 
       {/* Filter Section */}
       <div className="filter-bar">
-      
+        <input
+          placeholder="Search by title or tag"
+          value={filters.search}
+          onChange={(e) => setFilters({ ...filters, search: e.target.value })}
+        />
 
         <select
           value={filters.status}
@@ -112,13 +116,19 @@ const Dashboard = () => {
 
       {/* Task List */}
       <div className="task-list">
-        {loading ? (
-          <p style={{ textAlign: "center", color: "#6b7280" }}>
-            Loading tasks...
-          </p>
-        ) : tasks.length === 0 ? (
-          <p>No tasks found.</p>
-        ) : (
+        {loading && (
+          <p style={{ textAlign: "center", color: "#6b7280" }}>Loading...</p>
+        )}
+
+        {!loading && tasks.length === 0 && (
+          <div className="no-tasks-card">
+            <h3>No matching tasks found</h3>
+            <p>Try changing your filters or search keyword.</p>
+          </div>
+        )}
+
+        {!loading &&
+          tasks.length > 0 &&
           tasks.map((task) => (
             <div key={task._id} className="task-card">
               <h4>{task.title}</h4>
@@ -136,8 +146,7 @@ const Dashboard = () => {
                 <button onClick={() => deleteTask(task._id)}>Delete</button>
               </div>
             </div>
-          ))
-        )}
+          ))}
       </div>
     </div>
   );

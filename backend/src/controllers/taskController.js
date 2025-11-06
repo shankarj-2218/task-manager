@@ -12,22 +12,34 @@ export const createTask = async (req, res) => {
 
 export const getTasks = async (req, res) => {
   try {
-    const { status, tag, page = 1, limit = 20 } = req.query;
+    const { status, search } = req.query;
+    const query = { userId: req.user._id }; // only current user's tasks
 
-    const filter = { userId: req.user._id };
-    if (status) filter.status = status;
-    if (tag) filter.tags = { $in: [tag] };
+    // If specific status is selected (not "All")
+    if (status && status.trim() !== "") {
+      query.status = status.trim();
+    }
 
-    const tasks = await Task.find(filter)
-      .skip((page - 1) * limit)
-      .limit(Number(limit));
+    // If search term is entered
+    if (search && search.trim() !== "") {
+      const regex = new RegExp(search.trim(), "i");
+      // Title OR tag must match — combined inside AND with status
+      query.$or = [
+        { title: { $regex: regex } },
+        { tags: { $elemMatch: { $regex: regex, $options: "i" } } },
+      ];
+    }
+
+    const tasks = await Task.find(query).sort({ createdAt: -1 });
 
     res.status(200).json(tasks);
   } catch (err) {
-    console.error(err);
+    console.error("Error fetching tasks:", err);
     res.status(500).json({ message: "Failed to fetch tasks" });
   }
 };
+
+
 
 
 export const updateTask = async (req, res) => {

@@ -1,70 +1,136 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Task Management System
 
-## Available Scripts
+A full-stack **Task Management Web Application** built using the **MERN** stack (MongoDB, Express, React, Node.js).
+This project allows users to register, log in, and manage their personal tasks — including adding, editing, deleting, and filtering by status, title, or tags.
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Secure **User Authentication** (Signup & Login) using JWT
+- Passwords securely hashed with **bcrypt**
+- **CRUD** operations for tasks
+- Filter tasks by:
+  - Status (Pending / In-Progress / Completed)
+  - Title or Tag (case-insensitive)
+- Clean, responsive UI
+- Error handling and validation
+- Bonus: Pagination-ready backend structure
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## Tech Stack
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+| Layer             | Technology                           |
+| :---------------- | :----------------------------------- |
+| Frontend          | React.js                             |
+| Backend           | Node.js, Express.js                  |
+| Database          | MongoDB Atlas                        |
+| Authentication    | JWT (JSON Web Token)                 |
+| Password Security | bcrypt                               |
+| Deployment        | Render (Backend) + Vercel (Frontend) |
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Environment Variables
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Create a `.env` file in the `backend/` directory with the following variables:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```env
+PORT=5000
+MONGO_URI=mongodb+srv://shankarjadhav1822_db_user:Suhani@task-manager.4mybjbv.mongodb.net/
+JWT_SECRET=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWUsImlhdCI6MTUxNjIzOTAyMn0.KMUFsIDTnFmyG3nMiGM6H9FNFUROf3wh7SmqJp-QV30
+```
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## 1. Installation & Setup
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Clone the repository
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```bash
+git clone https://github.com/shankarj-2218/task-management-system.git
+cd task-management-system
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+---
 
-## Learn More
+### 2. Backend Setup
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```bash
+cd backend
+npm install
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Create a `.env` file as shown above.
 
-### Code Splitting
+Start backend:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```bash
+npm run dev
+```
 
-### Analyzing the Bundle Size
+Backend will run on `http://localhost:5000`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+---
 
-### Making a Progressive Web App
+### 3. Frontend Setup
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+```bash
+cd ../frontend
+npm install
+npm start
+```
 
-### Advanced Configuration
+Frontend will run on `http://localhost:3000`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+---
 
-### Deployment
+### 4. Folder Structure
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+```
+task-management-system/
+├── backend/
+│   ├── src/
+│   │   ├── controllers/
+│   │   ├── models/
+│   │   ├── routes/
+│   │   ├── middleware/
+│   │   └── server.js
+│   └── package.json
+├── frontend/
+│   ├── src/
+│   │   ├── pages/
+│   │   ├── components/
+│   │   └── App.js
+│   └── package.json
+└── README.md
+```
 
-### `npm run build` fails to minify
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Deployment Links
+
+| Service                     | URL                                              |
+| :-------------------------- | :----------------------------------------------- |
+| **Frontend (Vercel)** | https://task-manager-4zyp.vercel.app/            |
+| **Backend (Render)**  | https://task-manager-g9fu.onrender.com/api/tasks |
+
+**Test User Credentials:**
+
+```
+Email: test@example.com
+Password: pass1234
+```
+
+---
+
+## Approach & Notes
+
+- Implemented **modular architecture** separating controllers, routes, and models for scalability.
+- Added JWT middleware to protect routes and ensure user-specific task visibility.
+- Used Mongoose schemas with timestamps for tracking task creation/updates.
+- Designed the frontend with React functional components and clean CSS.
+- Filters combine `status` + `search` for AND-based matching — ensuring accurate results.
+- Integrated error handling for both client and server sides for smooth UX.

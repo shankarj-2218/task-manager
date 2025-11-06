@@ -1,25 +1,81 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: Arial, sans-serif;
+  background: #f7f9fb;
+  color: #222;
 }
 
-.container {
+.auth-container, .dashboard {
   width: 400px;
   margin: 40px auto;
-  text-align: center;
+  background: white;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
-input, select, button {
+
+.auth-form input, .task-form input, .task-form select, button {
   display: block;
   width: 100%;
   margin: 8px 0;
-  padding: 8px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
 }
-.task {
-  border: 1px solid #ddd;
-  margin: 10px 0;
-  padding: 8px;
+
+button {
+  background: #007bff;
+  color: white;
+  cursor: pointer;
+  border: none;
+}
+
+button:hover {
+  background: #0056b3;
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.filter-bar {
+  display: flex;
+  gap: 10px;
+  margin: 15px 0;
+}
+.filter-bar button {
+  background: #28a745;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.filter-bar button:hover {
+  background: #218838;
+}
+
+
+.task-list {
+  margin-top: 20px;
+}
+
+.task-card {
+  border: 1px solid #eee;
+  border-radius: 8px;
+  padding: 12px;
+  background: #fafafa;
+  margin-bottom: 12px;
+}
+
+.task-actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+.task-form-buttons {
+  display: flex;
+  justify-content: space-between;
 }

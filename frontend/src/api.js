@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "https://your-backend.onrender.com/api", // change after deploy
+  baseURL: "https://task-manager-g9fu.onrender.com/api", // change after deploy
 });
 
 API.interceptors.request.use((req) => {

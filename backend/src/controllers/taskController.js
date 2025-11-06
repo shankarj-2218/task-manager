@@ -12,12 +12,23 @@ export const createTask = async (req, res) => {
 
 export const getTasks = async (req, res) => {
   try {
-    const tasks = await Task.find({ userId: req.user._id });
-    res.json(tasks);
+    const { status, tag, page = 1, limit = 20 } = req.query;
+
+    const filter = { userId: req.user._id };
+    if (status) filter.status = status;
+    if (tag) filter.tags = { $in: [tag] };
+
+    const tasks = await Task.find(filter)
+      .skip((page - 1) * limit)
+      .limit(Number(limit));
+
+    res.status(200).json(tasks);
   } catch (err) {
-    res.status(500).json({ message: err.message });
+    console.error(err);
+    res.status(500).json({ message: "Failed to fetch tasks" });
   }
 };
+
 
 export const updateTask = async (req, res) => {
   try {
@@ -33,6 +44,8 @@ export const updateTask = async (req, res) => {
   }
 };
 
+
+
 export const deleteTask = async (req, res) => {
   try {
     const task = await Task.findOneAndDelete({ _id: req.params.id, userId: req.user._id });
@@ -42,3 +55,5 @@ export const deleteTask = async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 };
+
+

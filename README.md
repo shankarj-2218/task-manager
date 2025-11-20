@@ -39,8 +39,8 @@ Create a `.env` file in the `backend/` directory with the following variables:
 
 ```env
 PORT=5000
-MONGO_URI=mongodb+srv://shankarjadhav1822_db_user:Suhani@task-manager.4mybjbv.mongodb.net/
-JWT_SECRET=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWUsImlhdCI6MTUxNjIzOTAyMn0.KMUFsIDTnFmyG3nMiGM6H9FNFUROf3wh7SmqJp-QV30
+MONGO_URI=your_mongodb_url
+JWT_SECRET=your_JWT_secret
 ```
 
 ---
